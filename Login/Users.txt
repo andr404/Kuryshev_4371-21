@@ -1,0 +1,2 @@
+admin*12345*This is admin!
+user*54321*This is user!!!!
