@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище KonfModel" Provider="Npgsql" ProviderManifestToken="12.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cuser">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surname" Type="text" Nullable="false" />
+          <Property Name="cname" Type="text" Nullable="false" />
+          <Property Name="patronymic" Type="text" />
+          <Property Name="phone" Type="text" Nullable="false" />
+          <Property Name="email" Type="text" Nullable="false" />
+          <Property Name="pass" Type="text" Nullable="false" />
+          <Property Name="status" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record">
+          <Key>
+            <PropertyRef Name="conf_id" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="conf_id" Type="int4" Nullable="false" />
+          <Property Name="user_id" Type="int4" Nullable="false" />
+          <Property Name="topic" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Сonference">
+          <Key>
+            <PropertyRef Name="conf_id" />
+          </Key>
+          <Property Name="conf_id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cname" Type="text" Nullable="false" />
+          <Property Name="subject" Type="text" Nullable="false" />
+          <Property Name="cdata" Type="date" Nullable="false" />
+          <Property Name="place" Type="text" Nullable="false" />
+          <Property Name="count_speakers" Type="int4" Nullable="false" />
+          <Property Name="count_guests" Type="int4" Nullable="false" />
+        </EntityType>
+        <Association Name="record_conf_id_fkey">
+          <End Role="Сonference" Type="Self.Сonference" Multiplicity="1" />
+          <End Role="record" Type="Self.record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сonference">
+              <PropertyRef Name="conf_id" />
+            </Principal>
+            <Dependent Role="record">
+              <PropertyRef Name="conf_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="record_user_id_fkey">
+          <End Role="cuser" Type="Self.cuser" Multiplicity="1" />
+          <End Role="record" Type="Self.record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cuser">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="record">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище KonfModelContainer">
+          <EntitySet Name="cuser" EntityType="Self.cuser" Schema="public" store:Type="Tables" />
+          <EntitySet Name="record" EntityType="Self.record" Schema="public" store:Type="Tables" />
+          <EntitySet Name="Сonference" EntityType="Self.Сonference" Schema="public" store:Type="Tables" />
+          <AssociationSet Name="record_conf_id_fkey" Association="Self.record_conf_id_fkey">
+            <End Role="Сonference" EntitySet="Сonference" />
+            <End Role="record" EntitySet="record" />
+          </AssociationSet>
+          <AssociationSet Name="record_user_id_fkey" Association="Self.record_user_id_fkey">
+            <End Role="cuser" EntitySet="cuser" />
+            <End Role="record" EntitySet="record" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KonfModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cuser">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="record" Relationship="Self.record_user_id_fkey" FromRole="cuser" ToRole="record" />
+        </EntityType>
+        <EntityType Name="record">
+          <Key>
+            <PropertyRef Name="conf_id" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="conf_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="topic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="cuser" Relationship="Self.record_user_id_fkey" FromRole="record" ToRole="cuser" />
+          <NavigationProperty Name="Сonference" Relationship="Self.record_conf_id_fkey" FromRole="record" ToRole="Сonference" />
+        </EntityType>
+        <EntityType Name="Сonference">
+          <Key>
+            <PropertyRef Name="conf_id" />
+          </Key>
+          <Property Name="conf_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cdata" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="place" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="count_speakers" Type="Int32" Nullable="false" />
+          <Property Name="count_guests" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="record" Relationship="Self.record_conf_id_fkey" FromRole="Сonference" ToRole="record" />
+        </EntityType>
+        <Association Name="record_user_id_fkey">
+          <End Role="cuser" Type="Self.cuser" Multiplicity="1" />
+          <End Role="record" Type="Self.record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cuser">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="record">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="record_conf_id_fkey">
+          <End Role="Сonference" Type="Self.Сonference" Multiplicity="1" />
+          <End Role="record" Type="Self.record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сonference">
+              <PropertyRef Name="conf_id" />
+            </Principal>
+            <Dependent Role="record">
+              <PropertyRef Name="conf_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KonfEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cuser" EntityType="Self.cuser" />
+          <EntitySet Name="record" EntityType="Self.record" />
+          <EntitySet Name="Сonference" EntityType="Self.Сonference" />
+          <AssociationSet Name="record_user_id_fkey" Association="Self.record_user_id_fkey">
+            <End Role="cuser" EntitySet="cuser" />
+            <End Role="record" EntitySet="record" />
+          </AssociationSet>
+          <AssociationSet Name="record_conf_id_fkey" Association="Self.record_conf_id_fkey">
+            <End Role="Сonference" EntitySet="Сonference" />
+            <End Role="record" EntitySet="record" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище KonfModelContainer" CdmEntityContainer="KonfEntities">
+          <EntitySetMapping Name="cuser">
+            <EntityTypeMapping TypeName="KonfModel.cuser">
+              <MappingFragment StoreEntitySet="cuser">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="cname" ColumnName="cname" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record">
+            <EntityTypeMapping TypeName="KonfModel.record">
+              <MappingFragment StoreEntitySet="record">
+                <ScalarProperty Name="conf_id" ColumnName="conf_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="topic" ColumnName="topic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Сonference">
+            <EntityTypeMapping TypeName="KonfModel.Сonference">
+              <MappingFragment StoreEntitySet="Сonference">
+                <ScalarProperty Name="conf_id" ColumnName="conf_id" />
+                <ScalarProperty Name="cname" ColumnName="cname" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="cdata" ColumnName="cdata" />
+                <ScalarProperty Name="place" ColumnName="place" />
+                <ScalarProperty Name="count_speakers" ColumnName="count_speakers" />
+                <ScalarProperty Name="count_guests" ColumnName="count_guests" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1637f2f4677c47d59ecf2dd9bb71e292" Name="Diagram1">
+        <EntityTypeShape EntityType="KonfModel.cuser" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="KonfModel.record" Width="1.5" PointX="3.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KonfModel.Сonference" Width="1.5" PointX="5.625" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="KonfModel.record_user_id_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="KonfModel.record_conf_id_fkey" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
