@@ -165,6 +165,7 @@ namespace Linq
                              select new { stud.code_stud, stud.surname, stud.name, g.name_group, stud.code_group }).ToList();
 
                 dataGridView1.DataSource = query;
+                label1.Visible = false;
             }
             catch
             {
@@ -231,6 +232,31 @@ namespace Linq
             if (Application.OpenForms.Count == 2)
                 this.Close();
             Application.OpenForms[0].Visible = true;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string text = textBox1.Text;
+            if (text != "")
+            {
+                if (comboBox1.Text == "Номер группы")
+                {
+                    for(int i = 0; i < text.Length; i++)
+                    if (!char.IsDigit(text[i]))
+                    {
+                        text = text.Remove(i, 1);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < text.Length; i++)
+                        if (!char.IsLetter(text[i]))
+                        {
+                            text = text.Remove(i, 1);
+                        }
+                }
+            }
+            textBox1.Text = text;
         }
     }
 }

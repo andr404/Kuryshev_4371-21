@@ -235,5 +235,31 @@ namespace Linq
             this.Close();
             Application.OpenForms[0].Visible = true;
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string text = textBox1.Text;
+            if (text != "")
+            {
+                if (comboBox1.Text == "Оценка")
+                {
+                    for (int i = 0; i < text.Length; i++)
+                        if (!char.IsDigit(text[i]))
+                        {
+                            text = text.Remove(i, 1);
+                        }
+                }
+                else
+                {
+                    for (int i = 0; i < text.Length; i++)
+                        if (!char.IsLetter(text[i]))
+                        {
+                            text = text.Remove(i, 1);
+                        }
+                }
+            }
+            textBox1.Text = text;
+        }
     }
+    
 }

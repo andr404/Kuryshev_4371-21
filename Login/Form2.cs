@@ -39,12 +39,19 @@ namespace Login
         {
             try
             {
-                User user = new User(textBox1.Text, textBox2.Text);
-                user.ChangePass("../../Users.txt", textBox1.Text, textBox2.Text);
+                if (textBox2.Text != "")
+                {
+                    User user = new User(textBox1.Text, textBox2.Text);
+                    user.ChangePass("../../Users.txt", textBox1.Text, textBox2.Text);
 
-                form1.Visible = true;
-                this.Close();
-                MessageBox.Show("Сделано!");
+                    form1.Visible = true;
+                    this.Close();
+                    MessageBox.Show("Сделано!");
+                }
+                else
+                {
+                    MessageBox.Show("Паротль не может быть пустым");
+                }
             }
             catch
             {
