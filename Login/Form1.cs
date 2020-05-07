@@ -20,16 +20,23 @@ namespace Login
 
         private void button1_Click(object sender, EventArgs e)
         {
-            User user = new User(textBox1.Text, textBox2.Text);
-
-
-            if (user.LoginPassIsTrue("../../Users.txt") != "")
+            try
             {
-                Form2 form2 = new Form2(this);
-                form2.Show();
+                User user = new User(textBox1.Text, textBox2.Text);
+
+
+                if (user.LoginPassIsTrue("../../Users.txt") != "")
+                {
+                    Form2 form2 = new Form2(this);
+                    form2.Show();
+                }
+                else
+                    MessageBox.Show("Не верный логин или пароль");
             }
-            else
-                MessageBox.Show("Не верный логин или пароль");
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

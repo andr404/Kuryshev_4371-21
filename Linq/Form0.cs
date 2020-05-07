@@ -22,6 +22,7 @@ namespace Linq
             Form1 form1 = new Form1();
             form1.Show();
             form1.Owner = this;
+            this.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -29,6 +30,7 @@ namespace Linq
             Form2 form2 = new Form2();
             form2.Show();
             form2.Owner = this;
+            this.Visible = false;
         }
     }
 }

@@ -59,8 +59,11 @@
             this.ClientSize = new System.Drawing.Size(483, 268);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form0";
-            this.Text = "Form0";
+            this.Text = "Начало";
             this.ResumeLayout(false);
 
         }

@@ -53,6 +53,7 @@
             this.name_bookTextBox = new System.Windows.Forms.TextBox();
             this.year_bookTextBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             name_bookLabel = new System.Windows.Forms.Label();
             year_bookLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataSet)).BeginInit();
@@ -66,25 +67,25 @@
             name_bookLabel.AutoSize = true;
             name_bookLabel.Location = new System.Drawing.Point(25, 86);
             name_bookLabel.Name = "name_bookLabel";
-            name_bookLabel.Size = new System.Drawing.Size(63, 13);
+            name_bookLabel.Size = new System.Drawing.Size(89, 13);
             name_bookLabel.TabIndex = 2;
-            name_bookLabel.Text = "name book:";
+            name_bookLabel.Text = "Название книги";
             // 
             // year_bookLabel
             // 
             year_bookLabel.AutoSize = true;
-            year_bookLabel.Location = new System.Drawing.Point(31, 133);
+            year_bookLabel.Location = new System.Drawing.Point(27, 129);
             year_bookLabel.Name = "year_bookLabel";
-            year_bookLabel.Size = new System.Drawing.Size(57, 13);
+            year_bookLabel.Size = new System.Drawing.Size(82, 13);
             year_bookLabel.TabIndex = 4;
-            year_bookLabel.Text = "year book:";
+            year_bookLabel.Text = "Год написания";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(154, 33);
+            this.label1.Location = new System.Drawing.Point(90, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(144, 24);
             this.label1.TabIndex = 0;
@@ -141,7 +142,7 @@
             this.booksBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.booksBindingNavigator.Name = "booksBindingNavigator";
             this.booksBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.booksBindingNavigator.Size = new System.Drawing.Size(470, 25);
+            this.booksBindingNavigator.Size = new System.Drawing.Size(320, 25);
             this.booksBindingNavigator.TabIndex = 1;
             this.booksBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -243,22 +244,22 @@
             // name_bookTextBox
             // 
             this.name_bookTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.booksBindingSource, "name_book", true));
-            this.name_bookTextBox.Location = new System.Drawing.Point(94, 83);
+            this.name_bookTextBox.Location = new System.Drawing.Point(120, 83);
             this.name_bookTextBox.Name = "name_bookTextBox";
-            this.name_bookTextBox.Size = new System.Drawing.Size(100, 20);
+            this.name_bookTextBox.Size = new System.Drawing.Size(169, 20);
             this.name_bookTextBox.TabIndex = 3;
             // 
             // year_bookTextBox
             // 
             this.year_bookTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.booksBindingSource, "year_book", true));
-            this.year_bookTextBox.Location = new System.Drawing.Point(94, 130);
+            this.year_bookTextBox.Location = new System.Drawing.Point(120, 126);
             this.year_bookTextBox.Name = "year_bookTextBox";
-            this.year_bookTextBox.Size = new System.Drawing.Size(100, 20);
+            this.year_bookTextBox.Size = new System.Drawing.Size(169, 20);
             this.year_bookTextBox.TabIndex = 5;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(94, 175);
+            this.button1.Location = new System.Drawing.Point(163, 175);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 23);
             this.button1.TabIndex = 6;
@@ -266,11 +267,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(34, 175);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Назад";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 390);
+            this.ClientSize = new System.Drawing.Size(320, 282);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(year_bookLabel);
             this.Controls.Add(this.year_bookTextBox);
@@ -283,6 +295,7 @@
             this.MinimizeBox = false;
             this.Name = "Form3";
             this.Text = "Таблица Книги";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.booksDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
@@ -317,5 +330,6 @@
         private System.Windows.Forms.TextBox name_bookTextBox;
         private System.Windows.Forms.TextBox year_bookTextBox;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -20,21 +20,25 @@ namespace Books
         private void button1_Click(object sender, EventArgs e)
         {
             new Form2().Show();
+            this.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             new Form3().Show();
+            this.Visible = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             new Form4().Show();
+            this.Visible = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             new Form5().Show();
+            this.Visible = false;
         }
     }
 }

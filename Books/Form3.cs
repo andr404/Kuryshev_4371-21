@@ -35,6 +35,21 @@ namespace Books
         private void button1_Click(object sender, EventArgs e)
         {
             new Form6().Show();
+            this.Visible = false;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.OpenForms[0].Visible = true;
+            this.Close();
+        }
+
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.OpenForms[0].Visible = true;
+            if (Application.OpenForms.Count == 2)
+                this.Close();
+        }
+
     }
 }

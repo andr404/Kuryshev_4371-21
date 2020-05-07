@@ -27,14 +27,25 @@ namespace Books
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "booksDataSet.authors". При необходимости она может быть перемещена или удалена.
             this.authorsTableAdapter.Fill(this.booksDataSet.authors);
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             new Form7().Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.OpenForms[0].Visible = true;
+            this.Close();
+        }
+
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.OpenForms[0].Visible = true;
+            if(Application.OpenForms.Count == 2)
+            this.Close();
         }
     }
 }

@@ -31,18 +31,25 @@ namespace Books
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataGridViewColumn Col = dataGridView1.Columns[0];
-            switch(listBox1.SelectedIndex)
+            try
             {
-                case 0: Col = dataGridView1.Columns[0]; break;
-                case 1: Col = dataGridView1.Columns[1]; break;
+                DataGridViewColumn Col = dataGridView1.Columns[0];
+                switch (listBox1.SelectedIndex)
+                {
+                    case 0: Col = dataGridView1.Columns[0]; break;
+                    case 1: Col = dataGridView1.Columns[1]; break;
+                }
+                if (radioButton1.Checked)
+                {
+                    dataGridView1.Sort(Col, ListSortDirection.Ascending);
+                }
+                else
+                    dataGridView1.Sort(Col, ListSortDirection.Descending);
             }
-            if (radioButton1.Checked)
+            catch
             {
-                dataGridView1.Sort(Col, ListSortDirection.Ascending);
+                MessageBox.Show("Ошибка");
             }
-            else
-                dataGridView1.Sort(Col, ListSortDirection.Descending);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -57,29 +64,44 @@ namespace Books
 
         private void button4_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < (dataGridView1.RowCount - 1); i++)
+            try
             {
-                for(int j = 0; j < (dataGridView1.ColumnCount); j++)
+                for (int i = 0; i < (dataGridView1.RowCount - 1); i++)
                 {
-                    DataGridViewCell cell = dataGridView1.Rows[i].Cells[j];
-                    cell.Style.BackColor = Color.White;
-                    cell.Style.ForeColor = Color.Black;
+                    for (int j = 0; j < (dataGridView1.ColumnCount); j++)
+                    {
+                        DataGridViewCell cell = dataGridView1.Rows[i].Cells[j];
+                        cell.Style.BackColor = Color.White;
+                        cell.Style.ForeColor = Color.Black;
+                    }
+                }
+                for (int i = 0; i < (dataGridView1.RowCount - 1); i++)
+                {
+                    for (int j = 0; j < (dataGridView1.ColumnCount); j++)
+                    {
+                        DataGridViewCell cell = dataGridView1.Rows[i].Cells[j];
+                        cell.Style.BackColor = Color.AliceBlue;
+                        cell.Style.ForeColor = Color.Blue;
+                    }
                 }
             }
-            for (int i = 0; i < (dataGridView1.RowCount - 1); i++)
+            catch
             {
-                for (int j = 0; j < (dataGridView1.ColumnCount); j++)
-                {
-                    DataGridViewCell cell = dataGridView1.Rows[i].Cells[j];
-                    cell.Style.BackColor = Color.AliceBlue;
-                    cell.Style.ForeColor = Color.Blue;
-                }
+                MessageBox.Show("Ошибка");
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
+            Application.OpenForms[1].Visible = true;
             this.Close();
+        }
+
+        private void Form6_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.OpenForms[1].Visible = true;
+            if (Application.OpenForms.Count == 3)
+                this.Close();
         }
     }
 }

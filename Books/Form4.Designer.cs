@@ -52,6 +52,7 @@
             this.publisherBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.name_publisherTextBox = new System.Windows.Forms.TextBox();
             this.city_publisherTextBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             name_publisherLabel = new System.Windows.Forms.Label();
             city_publisherLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataSet)).BeginInit();
@@ -65,18 +66,18 @@
             name_publisherLabel.AutoSize = true;
             name_publisherLabel.Location = new System.Drawing.Point(12, 85);
             name_publisherLabel.Name = "name_publisherLabel";
-            name_publisherLabel.Size = new System.Drawing.Size(81, 13);
+            name_publisherLabel.Size = new System.Drawing.Size(79, 13);
             name_publisherLabel.TabIndex = 2;
-            name_publisherLabel.Text = "name publisher:";
+            name_publisherLabel.Text = "Издательство";
             // 
             // city_publisherLabel
             // 
             city_publisherLabel.AutoSize = true;
             city_publisherLabel.Location = new System.Drawing.Point(22, 126);
             city_publisherLabel.Name = "city_publisherLabel";
-            city_publisherLabel.Size = new System.Drawing.Size(71, 13);
+            city_publisherLabel.Size = new System.Drawing.Size(37, 13);
             city_publisherLabel.TabIndex = 4;
-            city_publisherLabel.Text = "city publisher:";
+            city_publisherLabel.Text = "Город";
             // 
             // label1
             // 
@@ -140,7 +141,7 @@
             this.publisherBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.publisherBindingNavigator.Name = "publisherBindingNavigator";
             this.publisherBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.publisherBindingNavigator.Size = new System.Drawing.Size(393, 25);
+            this.publisherBindingNavigator.Size = new System.Drawing.Size(352, 25);
             this.publisherBindingNavigator.TabIndex = 1;
             this.publisherBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -244,7 +245,7 @@
             this.name_publisherTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.publisherBindingSource, "name_publisher", true));
             this.name_publisherTextBox.Location = new System.Drawing.Point(99, 82);
             this.name_publisherTextBox.Name = "name_publisherTextBox";
-            this.name_publisherTextBox.Size = new System.Drawing.Size(100, 20);
+            this.name_publisherTextBox.Size = new System.Drawing.Size(211, 20);
             this.name_publisherTextBox.TabIndex = 3;
             // 
             // city_publisherTextBox
@@ -252,14 +253,25 @@
             this.city_publisherTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.publisherBindingSource, "city_publisher", true));
             this.city_publisherTextBox.Location = new System.Drawing.Point(99, 123);
             this.city_publisherTextBox.Name = "city_publisherTextBox";
-            this.city_publisherTextBox.Size = new System.Drawing.Size(100, 20);
+            this.city_publisherTextBox.Size = new System.Drawing.Size(211, 20);
             this.city_publisherTextBox.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 163);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Назад";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 381);
+            this.ClientSize = new System.Drawing.Size(352, 207);
+            this.Controls.Add(this.button1);
             this.Controls.Add(city_publisherLabel);
             this.Controls.Add(this.city_publisherTextBox);
             this.Controls.Add(name_publisherLabel);
@@ -270,6 +282,7 @@
             this.MinimizeBox = false;
             this.Name = "Form4";
             this.Text = "Таблица \"Издательства\"";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form4_FormClosed);
             this.Load += new System.EventHandler(this.Form4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.booksDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.publisherBindingSource)).EndInit();
@@ -303,5 +316,6 @@
         private System.Windows.Forms.ToolStripButton publisherBindingNavigatorSaveItem;
         private System.Windows.Forms.TextBox name_publisherTextBox;
         private System.Windows.Forms.TextBox city_publisherTextBox;
+        private System.Windows.Forms.Button button1;
     }
 }

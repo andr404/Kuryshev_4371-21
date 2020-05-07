@@ -31,5 +31,18 @@ namespace Books
             this.publisherTableAdapter.Fill(this.booksDataSet.publisher);
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.OpenForms[0].Visible = true;
+            this.Close();
+        }
+
+        private void Form4_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.OpenForms[0].Visible = true;
+            if (Application.OpenForms.Count == 2)
+                this.Close();
+        }
     }
 }

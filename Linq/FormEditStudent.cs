@@ -16,42 +16,55 @@ namespace Linq
         student item;
         public FormEditStudent(student stud)
         {
-            item = stud;
-            InitializeComponent();
-
-            var groups_for_list = (from g in db.groups
-                                   select g.name_group).Distinct();
-
-            foreach(string it in groups_for_list)
+            try
             {
-                comboBox1.Items.Add(it);
+                item = stud;
+                InitializeComponent();
+
+                var groups_for_list = (from g in db.groups
+                                       select g.name_group).Distinct();
+
+                foreach (string it in groups_for_list)
+                {
+                    comboBox1.Items.Add(it);
+                }
+
+                textBox1.Text = item.surname.ToString();
+                textBox2.Text = item.name.ToString();
+
+                var querty = (from g in db.groups
+                              where g.code_group == item.code_group
+                              select g.name_group).ToList();
+
+                comboBox1.SelectedItem = querty[0];
             }
-
-            textBox1.Text = item.surname.ToString();
-            textBox2.Text = item.name.ToString();
-
-            var querty = (from g in db.groups
-                          where g.code_group == item.code_group
-                          select g.name_group).ToList();
-
-            comboBox1.SelectedItem = querty[0];
-
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var result = ((Form1)Owner).db.students.SingleOrDefault(w => w.code_stud == item.code_stud);
-            result.surname = textBox1.Text.ToString();
-            result.name = textBox2.Text.ToString();
-            var query = (from g in db.groups
-                         where g.name_group == comboBox1.SelectedItem.ToString()
-                         select g.code_group).ToList();
-            result.code_group = query[0];
+            try
+            {
+                var result = ((Form1)Owner).db.students.SingleOrDefault(w => w.code_stud == item.code_stud);
+                result.surname = textBox1.Text.ToString();
+                result.name = textBox2.Text.ToString();
+                var query = (from g in db.groups
+                             where g.name_group == comboBox1.SelectedItem.ToString()
+                             select g.code_group).ToList();
+                result.code_group = query[0];
 
-            ((Form1)Owner).studentsheet = ((Form1)Owner).db.students
-                .OrderBy(o => o.code_stud).ToList();
+                ((Form1)Owner).studentsheet = ((Form1)Owner).db.students
+                    .OrderBy(o => o.code_stud).ToList();
 
-            this.Close();
+                this.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
