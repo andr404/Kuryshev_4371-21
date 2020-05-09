@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ConferenceModel" Provider="Npgsql" ProviderManifestToken="12.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="conf">
+    <Key>
+      <PropertyRef Name="conf_id" />
+    </Key>
+    <Property Name="conf_id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="text" Nullable="false" />
+    <Property Name="subject" Type="text" Nullable="false" />
+    <Property Name="data" Type="date" Nullable="false" />
+    <Property Name="place" Type="text" Nullable="false" />
+    <Property Name="count_speakers" Type="int4" Nullable="false" />
+    <Property Name="count_guests" Type="int4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="records">
+    <Key>
+      <PropertyRef Name="conf_id" />
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="conf_id" Type="int4" Nullable="false" />
+    <Property Name="user_id" Type="int4" Nullable="false" />
+    <Property Name="topic" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="surname" Type="text" Nullable="false" />
+    <Property Name="name" Type="text" Nullable="false" />
+    <Property Name="lastname" Type="text" />
+    <Property Name="phone" Type="text" Nullable="false" />
+    <Property Name="email" Type="text" Nullable="false" />
+    <Property Name="pass" Type="text" Nullable="false" />
+    <Property Name="status" Type="int4" Nullable="false" />
+  </EntityType>
+  <Association Name="records_conf_id_fkey">
+    <End Role="conf" Type="Self.conf" Multiplicity="1" />
+    <End Role="records" Type="Self.records" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="conf">
+        <PropertyRef Name="conf_id" />
+      </Principal>
+      <Dependent Role="records">
+        <PropertyRef Name="conf_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="records_user_id_fkey">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="records" Type="Self.records" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="records">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ConferenceModelContainer">
+    <EntitySet Name="conf" EntityType="Self.conf" Schema="public" store:Type="Tables" />
+    <EntitySet Name="records" EntityType="Self.records" Schema="public" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="public" store:Type="Tables" />
+    <AssociationSet Name="records_conf_id_fkey" Association="Self.records_conf_id_fkey">
+      <End Role="conf" EntitySet="conf" />
+      <End Role="records" EntitySet="records" />
+    </AssociationSet>
+    <AssociationSet Name="records_user_id_fkey" Association="Self.records_user_id_fkey">
+      <End Role="users" EntitySet="users" />
+      <End Role="records" EntitySet="records" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
