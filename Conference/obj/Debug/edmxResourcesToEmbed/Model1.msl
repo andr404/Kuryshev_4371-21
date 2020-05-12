@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище ConferenceModelContainer" CdmEntityContainer="ConferenceEntities">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ConferenceModelContainer" CdmEntityContainer="ConferenceEntities1">
     <EntitySetMapping Name="conf">
       <EntityTypeMapping TypeName="ConferenceModel.conf">
         <MappingFragment StoreEntitySet="conf">
@@ -11,6 +11,7 @@
           <ScalarProperty Name="place" ColumnName="place" />
           <ScalarProperty Name="count_speakers" ColumnName="count_speakers" />
           <ScalarProperty Name="count_guests" ColumnName="count_guests" />
+          <ScalarProperty Name="starttime" ColumnName="starttime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

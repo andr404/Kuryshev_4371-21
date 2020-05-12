@@ -19,7 +19,16 @@ namespace Conference
 
         private void EnterButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(BD.GetStatus(textBox_login.Text, textBox_pass.Text).ToString());
+            string login = textBox_login.Text;
+            string password = textBox_pass.Text;
+            if (BD.GetStatus(login, password) == 0)
+            {
+                Admin admin = BD.GetAdmin(login, password);
+                new FormAdminStart(admin).Show();
+                this.Visible = false;
+            }
+
         }
+
     }
 }

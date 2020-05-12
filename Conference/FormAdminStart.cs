@@ -1,0 +1,70 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Conference
+{
+    public partial class FormAdminStart : Form
+    {
+        Admin admin;
+        public FormAdminStart(Admin admin)
+        {
+            InitializeComponent();
+            this.admin = admin;
+            UpdateConferences();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormAdminAddConf form = new FormAdminAddConf(this);
+            form.Show();
+            form.Owner = this;
+            this.Enabled = false;
+        }
+
+        public void UpdateConferences()
+        {
+            var confs = BD.GetAllConferences();
+            dataGridView1.DataSource = confs;
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedCells.Count == 1 || dataGridView1.SelectedRows.Count == 1)
+            {
+                try
+                {
+                    conf conference = new conf
+                    {
+                        conf_id = (int)dataGridView1.SelectedCells[0].OwningRow.Cells[0].Value,
+                        name = dataGridView1.SelectedCells[0].OwningRow.Cells[1].Value.ToString(),
+                        subject = dataGridView1.SelectedCells[0].OwningRow.Cells[2].Value.ToString(),
+                        data = (DateTime)dataGridView1.SelectedCells[0].OwningRow.Cells[3].Value,
+                        place = dataGridView1.SelectedCells[0].OwningRow.Cells[4].Value.ToString(),
+                        count_speakers = (int)dataGridView1.SelectedCells[0].OwningRow.Cells[5].Value,
+                        count_guests = (int)dataGridView1.SelectedCells[0].OwningRow.Cells[6].Value,
+                        starttime = (TimeSpan)dataGridView1.SelectedCells[0].OwningRow.Cells[7].Value
+                    };
+
+                    FormAdminEdit form = new FormAdminEdit(this, conference);
+                    form.Show();
+                    form.Owner = this;
+                    this.Enabled = false;
+
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка выбора конференции");
+                }
+            }
+            else
+                MessageBox.Show("Вырите одну конференцию");
+        }
+    }
+}

@@ -37,3 +37,6 @@ D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.csproj.
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.csproj.CopyComplete
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.exe
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.pdb
+D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormAdminStart.resources
+D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormAdminAddConf.resources
+D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormAdminEdit.resources

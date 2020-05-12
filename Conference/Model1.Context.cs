@@ -13,10 +13,10 @@ namespace Conference
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ConferenceEntities : DbContext
+    public partial class ConferenceEntities1 : DbContext
     {
-        public ConferenceEntities()
-            : base("name=ConferenceEntities")
+        public ConferenceEntities1()
+            : base("name=ConferenceEntities1")
         {
         }
     

@@ -27,6 +27,7 @@ namespace Conference
         public string place { get; set; }
         public int count_speakers { get; set; }
         public int count_guests { get; set; }
+        public System.TimeSpan starttime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<records> records { get; set; }

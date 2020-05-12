@@ -11,6 +11,7 @@
     <Property Name="place" Type="text" Nullable="false" />
     <Property Name="count_speakers" Type="int4" Nullable="false" />
     <Property Name="count_guests" Type="int4" Nullable="false" />
+    <Property Name="starttime" Type="time" Precision="6" Nullable="false" />
   </EntityType>
   <EntityType Name="records">
     <Key>

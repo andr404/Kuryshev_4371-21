@@ -39,17 +39,20 @@
             this.textBox_login.Name = "textBox_login";
             this.textBox_login.Size = new System.Drawing.Size(100, 20);
             this.textBox_login.TabIndex = 0;
+            this.textBox_login.Text = "andr_404@mail.ru";
             // 
             // textBox_pass
             // 
             this.textBox_pass.Location = new System.Drawing.Point(314, 140);
             this.textBox_pass.Name = "textBox_pass";
+            this.textBox_pass.PasswordChar = '*';
             this.textBox_pass.Size = new System.Drawing.Size(100, 20);
             this.textBox_pass.TabIndex = 1;
+            this.textBox_pass.Text = "minadmin";
             // 
             // EnterButton
             // 
-            this.EnterButton.Location = new System.Drawing.Point(314, 196);
+            this.EnterButton.Location = new System.Drawing.Point(330, 190);
             this.EnterButton.Name = "EnterButton";
             this.EnterButton.Size = new System.Drawing.Size(75, 23);
             this.EnterButton.TabIndex = 2;

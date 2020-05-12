@@ -11,6 +11,7 @@
     <Property Name="place" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="count_speakers" Type="Int32" Nullable="false" />
     <Property Name="count_guests" Type="Int32" Nullable="false" />
+    <Property Name="starttime" Type="Time" Precision="6" Nullable="false" />
     <NavigationProperty Name="records" Relationship="Self.records_conf_id_fkey" FromRole="conf" ToRole="records" />
   </EntityType>
   <EntityType Name="records">
@@ -62,7 +63,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="ConferenceEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="ConferenceEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="conf" EntityType="Self.conf" />
     <EntitySet Name="records" EntityType="Self.records" />
     <EntitySet Name="users" EntityType="Self.users" />

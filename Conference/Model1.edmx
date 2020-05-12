@@ -16,6 +16,7 @@
           <Property Name="place" Type="text" Nullable="false" />
           <Property Name="count_speakers" Type="int4" Nullable="false" />
           <Property Name="count_guests" Type="int4" Nullable="false" />
+          <Property Name="starttime" Type="time" Precision="6" Nullable="false" />
         </EntityType>
         <EntityType Name="records">
           <Key>
@@ -92,6 +93,7 @@
           <Property Name="place" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="count_speakers" Type="Int32" Nullable="false" />
           <Property Name="count_guests" Type="Int32" Nullable="false" />
+          <Property Name="starttime" Type="Time" Precision="6" Nullable="false" />
           <NavigationProperty Name="records" Relationship="Self.records_conf_id_fkey" FromRole="conf" ToRole="records" />
         </EntityType>
         <EntityType Name="records">
@@ -143,7 +145,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ConferenceEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ConferenceEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="conf" EntityType="Self.conf" />
           <EntitySet Name="records" EntityType="Self.records" />
           <EntitySet Name="users" EntityType="Self.users" />
@@ -161,7 +163,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ConferenceModelContainer" CdmEntityContainer="ConferenceEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ConferenceModelContainer" CdmEntityContainer="ConferenceEntities1">
           <EntitySetMapping Name="conf">
             <EntityTypeMapping TypeName="ConferenceModel.conf">
               <MappingFragment StoreEntitySet="conf">
@@ -172,6 +174,7 @@
                 <ScalarProperty Name="place" ColumnName="place" />
                 <ScalarProperty Name="count_speakers" ColumnName="count_speakers" />
                 <ScalarProperty Name="count_guests" ColumnName="count_guests" />
+                <ScalarProperty Name="starttime" ColumnName="starttime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -17,9 +17,11 @@ namespace Conference
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void enterButton_Click(object sender, EventArgs e)
         {
-            new FormEnter().Show();
+            FormEnter formEnter = new FormEnter();
+            formEnter.Show();
+            this.Visible = false;
         }
     }
 }
