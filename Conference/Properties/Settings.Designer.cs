@@ -23,21 +23,39 @@ namespace Conference.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string login {
+        public string RememberLogin {
             get {
-                return ((string)(this["login"]));
+                return ((string)(this["RememberLogin"]));
+            }
+            set {
+                this["RememberLogin"] = value;
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string password {
+        public string RememberPass {
             get {
-                return ((string)(this["password"]));
+                return ((string)(this["RememberPass"]));
+            }
+            set {
+                this["RememberPass"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsRemember {
+            get {
+                return ((bool)(this["IsRemember"]));
+            }
+            set {
+                this["IsRemember"] = value;
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -123,6 +124,67 @@ namespace Conference
             }
         }
 
+        public static users GetUserById(int id)
+        {
+            try
+            {
+                var user = (from u in db.users
+                            where u.user_id == id
+                            select u).First();
+                return user;
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка запроса нахождения пользователя");
+                return null;
+            }
+        }
 
+        public static List<users> GetGuestsRegistrationList(int condId)
+        {
+            List<users> userList = new List<users>();
+            try
+            {
+                var usersIdList = (from r in db.records
+                                where r.conf_id == condId
+                                && r.topic == null
+                                select r.user_id).ToList();
+                foreach(int userId in usersIdList)
+                {
+                    userList.Add(GetUserById(userId));
+                }
+                 
+
+                return userList;
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка запроса");
+                return userList;
+            }
+        }
+
+        public static List<users> GetSpeakersRegistrationList(int condId)
+        {
+            List<users> userList = new List<users>();
+            try
+            {
+                var usersIdList = (from r in db.records
+                                where r.conf_id == condId
+                                && r.topic != null
+                                select r.user_id).ToList();
+                foreach (int userId in usersIdList)
+                {
+                    userList.Add(GetUserById(userId));
+                }
+
+                return userList;
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка запроса");
+                return userList;
+            }
+        }
     }
 }

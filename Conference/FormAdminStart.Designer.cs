@@ -85,6 +85,7 @@
             this.buttonMore.TabIndex = 6;
             this.buttonMore.Text = "Подробнее";
             this.buttonMore.UseVisualStyleBackColor = true;
+            this.buttonMore.Click += new System.EventHandler(this.buttonMore_Click);
             // 
             // label4
             // 

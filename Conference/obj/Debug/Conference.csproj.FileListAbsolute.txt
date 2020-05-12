@@ -28,8 +28,6 @@ D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\bin\Debug\System.Text.Encodi
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\bin\Debug\System.Text.Json.xml
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\bin\Debug\System.ValueTuple.xml
-D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.csprojAssemblyReference.cache
-D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.Form1.resources
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormEnter.resources
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.Properties.Resources.resources
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.csproj.GenerateResource.cache
@@ -40,3 +38,6 @@ D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.pdb
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormAdminStart.resources
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormAdminAddConf.resources
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormAdminEdit.resources
+D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormAdminChoiceList.resources
+D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormGuestsList.resources
+D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormSpeakersList.resources

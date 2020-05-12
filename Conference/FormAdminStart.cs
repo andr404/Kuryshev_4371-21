@@ -66,5 +66,42 @@ namespace Conference
             else
                 MessageBox.Show("Вырите одну конференцию");
         }
+
+        private void buttonMore_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedCells.Count == 1 || dataGridView1.SelectedRows.Count == 1)
+            {
+                try
+                {
+                    int conf_id = (int)dataGridView1.SelectedCells[0].OwningRow.Cells[0].Value;
+                    FormAdminChoiceList form = new FormAdminChoiceList(conf_id, this);
+                    form.Show();
+                    form.Owner = this;
+                    this.Enabled = false;
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка открытия диалогового окна");
+                }
+            }
+            else
+                MessageBox.Show("Вырите одну конференцию");
+        }
+
+        public void OpenGuestsList(int confId)
+        {
+            FormGuestsList form = new FormGuestsList(confId, this);
+            form.Show();
+            form.Owner = this;
+            this.Enabled = false;
+        }
+
+        public void OpenSpeakersList(int confId)
+        {
+            FormSpeakersList form = new FormSpeakersList(confId, this);
+            form.Show();
+            form.Owner = this;
+            this.Enabled = false;
+        }
     }
 }
