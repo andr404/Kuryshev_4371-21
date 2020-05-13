@@ -94,7 +94,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs" />
     <Compile Include="BD.cs" />
     <Compile Include="conf.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -123,6 +122,18 @@
     <Compile Include="FormAdminStart.Designer.cs">
       <DependentUpon>FormAdminStart.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormConferencePresentation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConferencePresentation.Designer.cs">
+      <DependentUpon>FormConferencePresentation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditProfile.Designer.cs">
+      <DependentUpon>FormEditProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEnter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,11 +146,23 @@
     <Compile Include="FormGuestsList.Designer.cs">
       <DependentUpon>FormGuestsList.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRegistration.Designer.cs">
+      <DependentUpon>FormRegistration.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSpeakersList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormSpeakersList.Designer.cs">
       <DependentUpon>FormSpeakersList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUserStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUserStart.Designer.cs">
+      <DependentUpon>FormUserStart.cs</DependentUpon>
     </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -161,9 +184,11 @@
     <Compile Include="records.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <Compile Include="users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="WorkWithInput.cs" />
     <EmbeddedResource Include="FormAdminAddConf.resx">
       <DependentUpon>FormAdminAddConf.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,14 +201,26 @@
     <EmbeddedResource Include="FormAdminStart.resx">
       <DependentUpon>FormAdminStart.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormConferencePresentation.resx">
+      <DependentUpon>FormConferencePresentation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditProfile.resx">
+      <DependentUpon>FormEditProfile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormEnter.resx">
       <DependentUpon>FormEnter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGuestsList.resx">
       <DependentUpon>FormGuestsList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormRegistration.resx">
+      <DependentUpon>FormRegistration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSpeakersList.resx">
       <DependentUpon>FormSpeakersList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUserStart.resx">
+      <DependentUpon>FormUserStart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

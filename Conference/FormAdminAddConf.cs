@@ -37,7 +37,7 @@ namespace Conference
                 TimeSpan time = TimeSpan.Parse(confTime.Text);
                 if (name != "" && subject != "" && place != "" && date > DateTime.Now)
                 {
-                    Admin.AddConference(name, subject, date, place, speakers, guests, time);
+                    User.AdminAddConference(name, subject, date, place, speakers, guests, time);
                     this.Close();
                     MessageBox.Show("Новая конференция добавлена");
                 }

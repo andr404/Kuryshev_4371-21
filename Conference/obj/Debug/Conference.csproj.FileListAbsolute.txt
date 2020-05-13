@@ -41,3 +41,8 @@ D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormAdm
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormAdminChoiceList.resources
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormGuestsList.resources
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormSpeakersList.resources
+D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormEditProfile.resources
+D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormRegistration.resources
+D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormUserStart.resources
+D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.FormConferencePresentation.resources
+D:\ANDR_404\MyProgramms\Kuryshev_4371-21\Conference\obj\Debug\Conference.csprojAssemblyReference.cache

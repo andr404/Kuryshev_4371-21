@@ -43,6 +43,7 @@
             this.confPlace = new System.Windows.Forms.TextBox();
             this.confSubject = new System.Windows.Forms.TextBox();
             this.confName = new System.Windows.Forms.TextBox();
+            this.buttonDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.countGuests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countSpeakers)).BeginInit();
             this.SuspendLayout();
@@ -182,11 +183,22 @@
             this.confName.Size = new System.Drawing.Size(100, 20);
             this.confName.TabIndex = 18;
             // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(610, 113);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.TabIndex = 33;
+            this.buttonDelete.Text = "button1";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
             // FormAdminEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.confTime);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonSave);
@@ -229,5 +241,6 @@
         private System.Windows.Forms.TextBox confPlace;
         private System.Windows.Forms.TextBox confSubject;
         private System.Windows.Forms.TextBox confName;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }

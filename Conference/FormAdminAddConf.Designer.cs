@@ -125,7 +125,7 @@
             // confDate
             // 
             this.confDate.Location = new System.Drawing.Point(173, 140);
-            this.confDate.Mask = "00.00.0000";
+            this.confDate.Mask = "00/00/0000";
             this.confDate.Name = "confDate";
             this.confDate.Size = new System.Drawing.Size(100, 20);
             this.confDate.TabIndex = 12;

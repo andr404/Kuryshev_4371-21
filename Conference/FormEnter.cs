@@ -24,12 +24,26 @@ namespace Conference
         {
             string login = textBox_login.Text;
             string password = textBox_pass.Text;
-            if (BD.GetStatus(login, password) == 0)
+            int statusUser = BD.GetStatus(login, password);
+            if (statusUser == 0)
             {
-                Admin admin = BD.GetAdmin(login, password);
-                new FormAdminStart(admin).Show();
+                User user = BD.GetUser(login, password);
+                new FormAdminStart(user, this).Show();
                 this.Visible = false;
             }
+            else if(statusUser > 0)
+            {
+                User user = BD.GetUser(login, password);
+                new FormUserStart(user, this).Show();
+                this.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль");
+            }
+
+
+
             if(checkRemember.Checked)
             {
                 SaveLoginAndPass(login, password, true);
@@ -49,5 +63,17 @@ namespace Conference
             Properties.Settings.Default.Save();
         }
 
+        private void buttonReg_Click(object sender, EventArgs e)
+        {
+            FormRegistration form = new FormRegistration(this);
+            form.Show();
+            form.Owner = this;
+            this.Enabled = false;
+        }
+
+        private void linkForget_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            
+        }
     }
 }

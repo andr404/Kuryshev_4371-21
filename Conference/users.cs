@@ -28,6 +28,7 @@ namespace Conference
         public string email { get; set; }
         public string pass { get; set; }
         public int status { get; set; }
+        public string about_your_self { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<records> records { get; set; }

@@ -44,7 +44,7 @@ namespace Conference
                 TimeSpan time = TimeSpan.Parse(confTime.Text);
                 if (name != "" && subject != "" && place != "" && date > DateTime.Now)
                 {
-                    Admin.EditConference(conference.conf_id, name, subject, date, place, speakers, guests, time);
+                    User.AdminEditConference(conference.conf_id, name, subject, date, place, speakers, guests, time);
                     this.Close();
                     MessageBox.Show("Данные успешно сохранены");
                 }
@@ -65,6 +65,12 @@ namespace Conference
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            User.AdminDeleteConference(conference.conf_id);
             this.Close();
         }
     }

@@ -12,11 +12,13 @@ namespace Conference
 {
     public partial class FormAdminStart : Form
     {
-        Admin admin;
-        public FormAdminStart(Admin admin)
+        User admin;
+        FormEnter formEnter;
+        public FormAdminStart(User admin, FormEnter formEnter)
         {
             InitializeComponent();
             this.admin = admin;
+            this.formEnter = formEnter;
             UpdateConferences();
         }
 
@@ -102,6 +104,28 @@ namespace Conference
             form.Show();
             form.Owner = this;
             this.Enabled = false;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormEditProfile form = new FormEditProfile(admin, this);
+            form.Show();
+            form.Owner = this;
+            this.Enabled = false;
+
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Properties.Settings.Default.RememberLogin = "";
+            Properties.Settings.Default.RememberPass = "";
+            Properties.Settings.Default.IsRemember = false;
+            Properties.Settings.Default.Save();
+            this.Close();
+            formEnter.Visible = true;
+            formEnter.textBox_login.Text = "";
+            formEnter.textBox_pass.Text = "";
+            formEnter.checkRemember.Checked = false;
         }
     }
 }

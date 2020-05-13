@@ -20,7 +20,7 @@
     </Key>
     <Property Name="conf_id" Type="int4" Nullable="false" />
     <Property Name="user_id" Type="int4" Nullable="false" />
-    <Property Name="topic" Type="text" Nullable="false" />
+    <Property Name="topic" Type="text" />
   </EntityType>
   <EntityType Name="users">
     <Key>
@@ -34,6 +34,7 @@
     <Property Name="email" Type="text" Nullable="false" />
     <Property Name="pass" Type="text" Nullable="false" />
     <Property Name="status" Type="int4" Nullable="false" />
+    <Property Name="about_your_self" Type="text" />
   </EntityType>
   <Association Name="records_conf_id_fkey">
     <End Role="conf" Type="Self.conf" Multiplicity="1" />

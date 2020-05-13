@@ -27,6 +27,7 @@
     <EntitySetMapping Name="users">
       <EntityTypeMapping TypeName="ConferenceModel.users">
         <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="about_your_self" ColumnName="about_your_self" />
           <ScalarProperty Name="user_id" ColumnName="user_id" />
           <ScalarProperty Name="surname" ColumnName="surname" />
           <ScalarProperty Name="name" ColumnName="name" />
