@@ -98,6 +98,7 @@
     <Compile Include="conf.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ConferenceWithTopic.cs" />
     <Compile Include="FormAdminAddConf.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +146,12 @@
     </Compile>
     <Compile Include="FormEnter.Designer.cs">
       <DependentUpon>FormEnter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFrogetPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFrogetPass.Designer.cs">
+      <DependentUpon>FormFrogetPass.cs</DependentUpon>
     </Compile>
     <Compile Include="FormGuestsList.cs">
       <SubType>Form</SubType>
@@ -219,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormEnter.resx">
       <DependentUpon>FormEnter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFrogetPass.resx">
+      <DependentUpon>FormFrogetPass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormGuestsList.resx">
       <DependentUpon>FormGuestsList.cs</DependentUpon>

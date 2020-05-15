@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEnter));
             this.textBox_login = new System.Windows.Forms.TextBox();
             this.textBox_pass = new System.Windows.Forms.TextBox();
             this.EnterButton = new System.Windows.Forms.Button();
@@ -47,6 +48,7 @@
             this.textBox_login.Name = "textBox_login";
             this.textBox_login.Size = new System.Drawing.Size(237, 26);
             this.textBox_login.TabIndex = 0;
+            this.textBox_login.TextChanged += new System.EventHandler(this.textBox_login_TextChanged);
             // 
             // textBox_pass
             // 
@@ -116,11 +118,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(57, 91);
+            this.label2.Location = new System.Drawing.Point(13, 91);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 20);
+            this.label2.Size = new System.Drawing.Size(92, 20);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Email";
+            this.label2.Text = "Email / Тел.";
             // 
             // label3
             // 
@@ -148,6 +150,7 @@
             this.Controls.Add(this.EnterButton);
             this.Controls.Add(this.textBox_pass);
             this.Controls.Add(this.textBox_login);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormEnter";
             this.Text = "iSpeak";

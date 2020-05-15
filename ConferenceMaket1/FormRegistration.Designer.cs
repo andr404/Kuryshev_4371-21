@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegistration));
             this.textBoxPass = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.maskedPhone = new System.Windows.Forms.MaskedTextBox();
@@ -50,23 +51,31 @@
             this.textBoxAbout = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labelAttention = new System.Windows.Forms.Label();
+            this.panelPass = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
+            this.panelPass.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxPass
             // 
             this.textBoxPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxPass.Location = new System.Drawing.Point(213, 237);
+            this.textBoxPass.Location = new System.Drawing.Point(1, 1);
             this.textBoxPass.Name = "textBoxPass";
+            this.textBoxPass.PasswordChar = '*';
             this.textBoxPass.Size = new System.Drawing.Size(403, 26);
             this.textBoxPass.TabIndex = 24;
+            this.textBoxPass.TextChanged += new System.EventHandler(this.textBoxPass_TextChanged);
             // 
             // textBoxEmail
             // 
             this.textBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxEmail.Location = new System.Drawing.Point(213, 203);
+            this.textBoxEmail.Location = new System.Drawing.Point(1, 1);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(403, 26);
             this.textBoxEmail.TabIndex = 23;
+            this.textBoxEmail.TextChanged += new System.EventHandler(this.textBoxEmail_TextChanged);
             // 
             // maskedPhone
             // 
@@ -180,13 +189,14 @@
             this.textBoxPassAgain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPassAgain.Location = new System.Drawing.Point(213, 274);
             this.textBoxPassAgain.Name = "textBoxPassAgain";
+            this.textBoxPassAgain.PasswordChar = '*';
             this.textBoxPassAgain.Size = new System.Drawing.Size(403, 26);
             this.textBoxPassAgain.TabIndex = 26;
             // 
             // buttonReg
             // 
             this.buttonReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonReg.Location = new System.Drawing.Point(435, 393);
+            this.buttonReg.Location = new System.Drawing.Point(435, 435);
             this.buttonReg.Name = "buttonReg";
             this.buttonReg.Size = new System.Drawing.Size(181, 36);
             this.buttonReg.TabIndex = 27;
@@ -197,7 +207,7 @@
             // buttonCancel
             // 
             this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonCancel.Location = new System.Drawing.Point(304, 393);
+            this.buttonCancel.Location = new System.Drawing.Point(304, 435);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(125, 36);
             this.buttonCancel.TabIndex = 28;
@@ -269,12 +279,43 @@
             this.label10.TabIndex = 35;
             this.label10.Text = "Зарегистрироваться как:";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.textBoxEmail);
+            this.panel1.Location = new System.Drawing.Point(213, 203);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(405, 28);
+            this.panel1.TabIndex = 36;
+            // 
+            // labelAttention
+            // 
+            this.labelAttention.AutoSize = true;
+            this.labelAttention.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAttention.ForeColor = System.Drawing.Color.Brown;
+            this.labelAttention.Location = new System.Drawing.Point(56, 389);
+            this.labelAttention.Name = "labelAttention";
+            this.labelAttention.Size = new System.Drawing.Size(446, 34);
+            this.labelAttention.TabIndex = 37;
+            this.labelAttention.Text = "* Пароль должел быть больше 7 символов и содержать заглавные\r\n буквы и цифры";
+            this.labelAttention.Visible = false;
+            // 
+            // panelPass
+            // 
+            this.panelPass.Controls.Add(this.textBoxPass);
+            this.panelPass.Location = new System.Drawing.Point(213, 237);
+            this.panelPass.Name = "panelPass";
+            this.panelPass.Size = new System.Drawing.Size(405, 28);
+            this.panelPass.TabIndex = 38;
+            // 
             // FormRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(677, 441);
+            this.ClientSize = new System.Drawing.Size(677, 483);
+            this.Controls.Add(this.panelPass);
+            this.Controls.Add(this.labelAttention);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBoxAbout);
@@ -285,8 +326,6 @@
             this.Controls.Add(this.buttonReg);
             this.Controls.Add(this.textBoxPassAgain);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBoxPass);
-            this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.maskedPhone);
             this.Controls.Add(this.textBoxLastName);
             this.Controls.Add(this.textBoxName);
@@ -298,10 +337,15 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormRegistration";
             this.Text = "Регистрация";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormRegistration_FormClosed);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panelPass.ResumeLayout(false);
+            this.panelPass.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,5 +375,8 @@
         private System.Windows.Forms.TextBox textBoxAbout;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label labelAttention;
+        private System.Windows.Forms.Panel panelPass;
     }
 }

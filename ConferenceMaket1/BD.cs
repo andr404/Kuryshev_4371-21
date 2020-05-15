@@ -88,6 +88,23 @@ namespace Conference
                 user.status,
                 user.about_your_self);
         }
+        public static User GetUserWithoutPass(string email)
+        {
+            var user = (from u in db.users
+                        where u.email == email
+                        select u).First();
+
+            return new User(
+                user.user_id,
+                user.surname,
+                user.name,
+                user.lastname,
+                user.phone,
+                user.email,
+                user.pass,
+                user.status,
+                user.about_your_self);
+        }
 
         public static void AddConference(string name, string subject, DateTime dateTime, string place, int countSpeakers, int countGuests, TimeSpan time)
         {
@@ -120,13 +137,13 @@ namespace Conference
             {
                 var confListWill = (from c in db.conf
                                     where c.data >= DateTime.Now
-                                    orderby c.data descending
-                                    //orderby c.starttime descending
+                                    orderby c.starttime
+                                    orderby c.data
                                     select c).ToList();
                 var confListWas = (from c in db.conf
                                    where c.data < DateTime.Now
-                                   orderby c.data descending
-                                   //orderby c.starttime descending
+                                   orderby c.starttime
+                                   orderby c.data
                                    select c).ToList();
                 confListWill.AddRange(confListWas);
                 return confListWill;
@@ -146,8 +163,8 @@ namespace Conference
             {
                 var confListWill = (from c in db.conf
                                     where c.data >= DateTime.Now
-                                    orderby c.data
                                     orderby c.starttime
+                                    orderby c.data
                                     select c).ToList();
                 var myConfs = GetMyConferences(userId);
                 for(int i =  0; i < confListWill.Count; i++)
@@ -188,9 +205,36 @@ namespace Conference
             }
         }
 
+        public static List<ConferenceWithTopic> GetMyConferencesWithTopic(int userId)
+        {
+            // Взятие из БД конференций, на которое он записан 
+            try
+            {
+                List<ConferenceWithTopic> returnList = new List<ConferenceWithTopic>();
+                var confListWill = (from c in db.conf
+                                    join r in db.records on c.conf_id equals r.conf_id
+                                    where c.data >= DateTime.Now
+                                    && r.user_id == userId
+                                    orderby c.data
+                                    orderby c.starttime
+                                    select new {c, r.topic }).ToList();
+                foreach(var item in confListWill)
+                {
+                    returnList.Add(new ConferenceWithTopic(item.c, item.topic));
+                }
+
+                return returnList;
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка обновления конференций");
+                return new List<ConferenceWithTopic>();
+            }
+        }
 
 
-        public static void EditConference(int confId, string newName, string newSubject, DateTime newDateTime, string newPlace, int newCountSpeakers, int newCountGuests, TimeSpan newTime)
+
+        public static bool EditConference(int confId, string newName, string newSubject, DateTime newDateTime, string newPlace, int newCountSpeakers, int newCountGuests, TimeSpan newTime)
         {
             try
             {
@@ -203,15 +247,59 @@ namespace Conference
                 confToChange.count_guests = newCountGuests;
                 confToChange.starttime = newTime;
                 db.SaveChanges();
+                return true;
             }
             catch
             {
                 MessageBox.Show("Ошибка сохранения данных");
+                return false;
+            }
+        }
+
+        public static List<users> GetSpeakersInConference(int confId)
+        {
+            // Взятие из БД пользователей, которые записаны на конференцию
+            try
+            {
+        var confListWill = (from c in db.conf
+                                    join r in db.records on c.conf_id equals r.conf_id
+                                    join u in db.users on r.user_id equals u.user_id
+                                    where c.data >= DateTime.Now
+                                    && c.conf_id == confId
+                                    && r.topic != null
+                                    select u).ToList();
+                return confListWill;
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка обновления конференций");
+                return new List<users>();
+            }
+        }
+
+        public static List<users> GetGuestsInConference(int confId)
+        {
+            // Взятие из БД пользователей, которые записаны на конференцию
+            try
+            {
+                var confListWill = (from c in db.conf
+                                    join r in db.records on c.conf_id equals r.conf_id
+                                    join u in db.users on r.user_id equals u.user_id
+                                    where c.data >= DateTime.Now
+                                    && c.conf_id == confId
+                                    && r.topic == null
+                                    select u).ToList();
+                return confListWill;
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка обновления конференций");
+                return new List<users>();
             }
         }
 
 
-        public static void DeleteConference(int confId)
+        public static bool DeleteConference(int confId)
         {
             try
             {
@@ -224,10 +312,12 @@ namespace Conference
 
                 db.conf.Remove(conference);
                 db.SaveChanges();
+                return true;
             }
             catch
             {
                 MessageBox.Show("Не удалось удалить конференцию");
+                return false;
             }
         }
 
@@ -278,18 +368,18 @@ namespace Conference
             }
         }
 
-        public static List<users> GetSpeakersRegistrationList(int condId)
+        public static List<UserWithTopic> GetSpeakersRegistrationList(int condId)
         {
-            List<users> userList = new List<users>();
+            List<UserWithTopic> userList = new List<UserWithTopic>();
             try
             {
                 var usersIdList = (from r in db.records
                                 where r.conf_id == condId
                                 && r.topic != null
-                                select r.user_id).ToList();
-                foreach (int userId in usersIdList)
+                                select r).ToList();
+                foreach (records rec in usersIdList)
                 {
-                    userList.Add(GetUserById(userId));
+                    userList.Add(new UserWithTopic(GetUserById(rec.user_id), rec.topic));
                 }
 
                 return userList;
@@ -418,6 +508,22 @@ namespace Conference
             if (userList.Count == 0)
                 return false;
             else return true;
+        }
+
+        public static conf GetConferenceById(int confId)
+        {
+            try
+            {
+                var conference = (from c in db.conf
+                                  where c.conf_id == confId
+                                  select c).First();
+                return conference;
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка запроса нахождения конференции");
+                return null;
+            }
         }
     }
 }

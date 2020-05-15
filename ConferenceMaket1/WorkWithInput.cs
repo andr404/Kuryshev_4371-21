@@ -93,6 +93,65 @@ namespace Conference
             }
         }
 
+        public static bool IsEmailRight(string email)
+        {
+            if (email.Contains('@') && email.Contains('.'))
+                return true;
+            else
+            {
+                return false;
+            }
+        }
+        public static bool IsPasswordRight(string pass)
+        {
+            bool upChar = false;
+            bool downChar = false;
+            bool number = false;
+            foreach(char c in pass)
+            {
+                if (char.IsUpper(c))
+                    upChar = true;
+                if (char.IsLower(c))
+                    downChar = true;
+                if (char.IsDigit(c))
+                    number = true;
+            }
+            if (upChar && downChar && number && pass.Length > 7)
+                return true;
+            else return false;
+        }
+        public static bool IsPhoneRight(string phone)
+        {
+            phone = PhoneWhithoutMask(phone);
+            if (phone.Length == 12)
+                return true;
+            else 
+            {
+                MessageBox.Show("Номер телефона введен неверно");
+                return false; 
+            }
+        }
+
+        public static void EditPhoneToRight(TextBox textBox)
+        {
+            string text = textBox.Text;
+            if(text.Length == 11)
+            {
+                bool allNums = true;
+                foreach(char c in text)
+                {
+                    if (!char.IsDigit(c))
+                        allNums = false;
+                }
+                if(allNums)
+                {
+                    text = text.Remove(0, 1);
+                    text = text.Insert(0, "+7");
+                    textBox.Text = text;
+                }
+            }
+        }
+
 
     }
 }

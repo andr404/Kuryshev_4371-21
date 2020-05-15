@@ -32,13 +32,18 @@ namespace Conference
                 string pass2 = textBoxPassAgain.Text;
                 int status = radioButtonGuest.Checked ? 2 : 1;
                 string aboutYourSelf = textBoxAbout.Text;
-                if (WorkWithInput.IsAllNotEmpty(surname, name, phone, email, pass, pass2) && ((status == 1 && aboutYourSelf != "") || status != 1) && WorkWithInput.IsPasswordsEqual(pass, pass2))
+                if (WorkWithInput.IsAllNotEmpty(surname, name)
+                    && WorkWithInput.IsPhoneRight(phone)
+                    && WorkWithInput.IsEmailRight(email)
+                    && WorkWithInput.IsPasswordRight(pass)
+                    && ((status == 1 && WorkWithInput.IsAllNotEmpty(aboutYourSelf)) || status != 1)
+                    && WorkWithInput.IsPasswordsEqual(pass, pass2))
                 {
-                    if (!WorkWithInput.IsEmailInBase(email) && !WorkWithInput.IsPhoneInBase(phone))
+                    if (!WorkWithInput.IsPhoneInBase(phone) && !WorkWithInput.IsEmailInBase(email))
                     {
                         User.CreateNewUser(surname, name, lastname, phone, email, pass, status, aboutYourSelf);
                         this.Close();
-                        MessageBox.Show("Данные успешно изменены");
+                        MessageBox.Show("Поздравляем, теперь вы можете войти в систему!");
                     }
                 }
             }
@@ -90,6 +95,30 @@ namespace Conference
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxEmail_TextChanged(object sender, EventArgs e)
+        {
+            string futureEmail = textBoxEmail.Text;
+            if (WorkWithInput.IsEmailRight(futureEmail))
+                panel1.BackColor = Color.DarkGray;
+            else
+                panel1.BackColor = Color.Red;
+        }
+
+        private void textBoxPass_TextChanged(object sender, EventArgs e)
+        {
+            string futureEmail = textBoxPass.Text;
+            if (WorkWithInput.IsPasswordRight(futureEmail))
+            {
+                panelPass.BackColor = Color.DarkGray;
+                labelAttention.Visible = false;
+            }
+            else
+            {
+                panelPass.BackColor = Color.Red;
+                labelAttention.Visible = true;
+            }
         }
     }
 }

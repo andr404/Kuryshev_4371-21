@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdminAddConf));
             this.confName = new System.Windows.Forms.TextBox();
             this.confSubject = new System.Windows.Forms.TextBox();
             this.confPlace = new System.Windows.Forms.TextBox();
@@ -231,6 +232,7 @@
             this.Controls.Add(this.confSubject);
             this.Controls.Add(this.confName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormAdminAddConf";
             this.Text = "Создание конференции";

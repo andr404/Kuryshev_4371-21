@@ -95,3 +95,4 @@ D:\ANDR_404\MyProgramms\Kuryshev_4371-21\ConferenceMaket1\obj\Debug\Conference.c
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\ConferenceMaket1\obj\Debug\Conference.exe
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\ConferenceMaket1\obj\Debug\Conference.pdb
 D:\ANDR_404\MyProgramms\Kuryshev_4371-21\ConferenceMaket1\obj\Debug\Conference.FormEditPass.resources
+D:\ANDR_404\MyProgramms\Kuryshev_4371-21\ConferenceMaket1\obj\Debug\Conference.FormFrogetPass.resources

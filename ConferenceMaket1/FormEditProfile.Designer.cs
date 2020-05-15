@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditProfile));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,6 +45,8 @@
             this.textBoxAbout = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.buttonEditPass = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -135,10 +138,11 @@
             // textBoxEmail
             // 
             this.textBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxEmail.Location = new System.Drawing.Point(166, 205);
+            this.textBoxEmail.Location = new System.Drawing.Point(1, 1);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(403, 26);
+            this.textBoxEmail.Size = new System.Drawing.Size(402, 26);
             this.textBoxEmail.TabIndex = 11;
+            this.textBoxEmail.TextChanged += new System.EventHandler(this.textBoxEmail_TextChanged);
             // 
             // buttonSave
             // 
@@ -203,19 +207,27 @@
             this.buttonEditPass.UseVisualStyleBackColor = true;
             this.buttonEditPass.Click += new System.EventHandler(this.buttonEditPass_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.textBoxEmail);
+            this.panel1.Location = new System.Drawing.Point(166, 203);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(405, 28);
+            this.panel1.TabIndex = 38;
+            // 
             // FormEditProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(636, 379);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonEditPass);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxAbout);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.maskedPhone);
             this.Controls.Add(this.textBoxLastName);
             this.Controls.Add(this.textBoxName);
@@ -226,10 +238,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormEditProfile";
             this.Text = "Редактирование профиля";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormEditProfile_FormClosed);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,5 +268,6 @@
         private System.Windows.Forms.TextBox textBoxAbout;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button buttonEditPass;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -22,7 +22,6 @@ namespace Conference
             UpdateTables();
             UpdateName();
             dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[8].Visible = false;
             dataGridView1.Columns[1].HeaderText = "Название";
             dataGridView1.Columns[2].HeaderText = "Тематика";
             dataGridView1.Columns[3].HeaderText = "Дата проведения";
@@ -30,6 +29,11 @@ namespace Conference
             dataGridView1.Columns[5].HeaderText = "Кол. выступающих";
             dataGridView1.Columns[6].HeaderText = "Кол. зрителей";
             dataGridView1.Columns[7].HeaderText = "Время";
+            if (user.status == 1)
+                dataGridView1.Columns[8].HeaderText = "Тема выступления";
+            else
+                dataGridView1.Columns[8].Visible = false;
+
 
             dataGridView2.Columns[0].Visible = false;
             dataGridView2.Columns[8].Visible = false;
@@ -73,8 +77,16 @@ namespace Conference
         {
             var futureList = BD.GetFutureConferences(user.id);
             dataGridView2.DataSource = futureList;
-            var myList = BD.GetMyConferences(user.id);
-            dataGridView1.DataSource = myList;
+            if (user.status != 1)
+            {
+                var myList = BD.GetMyConferences(user.id);
+                dataGridView1.DataSource = myList;
+            }
+            else
+            {
+                var myList = BD.GetMyConferencesWithTopic(user.id);
+                dataGridView1.DataSource = myList;
+            }
         }
 
         private void buttonReg_Click(object sender, EventArgs e)

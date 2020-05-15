@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConferencePresentation));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonReg = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -38,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.labelPlace = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,6 +144,7 @@
             this.label2.Size = new System.Drawing.Size(132, 20);
             this.label2.TabIndex = 7;
             this.label2.Text = "Записаться как:";
+            this.label2.Visible = false;
             // 
             // label3
             // 
@@ -154,12 +157,23 @@
             this.label3.Text = "Тема выступления";
             this.label3.Visible = false;
             // 
+            // labelPlace
+            // 
+            this.labelPlace.AutoSize = true;
+            this.labelPlace.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPlace.Location = new System.Drawing.Point(12, 447);
+            this.labelPlace.Name = "labelPlace";
+            this.labelPlace.Size = new System.Drawing.Size(182, 20);
+            this.labelPlace.TabIndex = 9;
+            this.labelPlace.Text = "Свободных мест _ из _";
+            // 
             // FormConferencePresentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(800, 498);
+            this.Controls.Add(this.labelPlace);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -170,6 +184,7 @@
             this.Controls.Add(this.buttonReg);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormConferencePresentation";
             this.Text = "Запись на конференцию";
@@ -191,5 +206,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelPlace;
     }
 }

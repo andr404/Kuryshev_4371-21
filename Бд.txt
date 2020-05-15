@@ -1,0 +1,55 @@
+База данных "Conference"
+
+
+CREATE TABLE conf(conf_id serial primary key,
+					name text not null,
+					subject text not null,
+					data date not null, 
+					place text not null, 
+					count_speakers int not null,
+					count_guests int not null,
+				  starttime time not null
+				);
+
+CREATE TABLE users(user_id serial primary key,
+					surname text not null,
+					name text not null,
+				   	lastname text,
+					phone text unique, 
+				  	email text unique, 
+					pass text not null,
+					status int not null,
+				   about_your_self text);
+
+CREATE TABLE records(conf_id int not null,
+					user_id int not null,
+					topic text,
+					PRIMARY KEY (conf_id, user_id)
+					);
+
+Alter Table records add Foreign key(conf_id) References conf(conf_id);
+Alter Table records add Foreign key(user_id) References users(user_id);
+
+
+
+Insert into conf(name, subject, data, place, count_speakers, count_guests, starttime)
+Values('Всё о коронавирусе', 'Последние открытия о короновирусе', '01-06-2020', 'г. Казань, ул. Пушкина 78', 45, 100, '15:00');
+Insert into conf(name, subject, data, place, count_speakers, count_guests, starttime)
+Values('Великая Отечественная Война', 'Подвиги советских солдат ВОВ', '15-06-2020', 'г. Казань, Парк Победы', 10, 500, '09:00');
+Insert into conf(name, subject, data, place, count_speakers, count_guests, starttime)
+Values('День ВДВ', 'Заслуги ВДВ', '02-08-2020', 'г. Казань, ул. Амирхана 71', 30, 50, '17:00');
+Insert into conf(name, subject, data, place, count_speakers, count_guests, starttime)
+Values('TED', 'Любая тема', '20-07-2020', 'г. Казань, ул. Карла Маркса 72б', 50, 1000, '10:00');
+
+Insert into users(surname, name, lastname, phone, email, pass, status, about_your_self)
+Values('Курышев', 'Андрей', 'Дмитриевич', '+79033138869', 'andr_404@mail.ru', 'D+KGdXnOxkCJhMHlyz2+AA==', 0, 'Админ');
+Insert into users(surname, name, lastname, phone, email, pass, status, about_your_self)
+Values('Кубышкин', 'Андрей', 'Семенович', '+79033138868', 'andr404a@gmail.com', 'h0q2kPXlPZnI1j8yTD9HDA==', 1, 'Профессор зоологических наук');
+Insert into users(surname, name, lastname, phone, email, pass, status, about_your_self)
+Values('Федоров', 'Максим', 'Семенович', '+79033138867', 'ak404_1@mail.ru', 'h0q2kPXlPZnI1j8yTD9HDA==', 1, 'Эксперт по коронавирусу');
+Insert into users(surname, name, lastname, phone, email, pass, status)
+Values('Собакин', 'Николай', 'Николаевич', '+79033138866', 'ak404_2@mail.ru', 'bOcRygQjRVWQw+JDUbnFmg==', 2);
+
+Insert into records(conf_id, user_id, topic) Values(1, 3, 'Как я победил коронавирус');
+Insert into records(conf_id, user_id, topic) Values(1, 2, 'Как я не победил коронавирус');
+Insert into records(conf_id, user_id) Values(1, 4);

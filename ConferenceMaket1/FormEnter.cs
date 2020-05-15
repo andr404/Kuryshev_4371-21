@@ -73,7 +73,23 @@ namespace Conference
 
         private void linkForget_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
+            FormFrogetPass formFrogetPass = new FormFrogetPass(this);
+            formFrogetPass.Show();
+            formFrogetPass.Owner = this;
+            this.Enabled = false;
+        }
+
+        public void openEditPass(string email)
+        {
+            FormEditPass formEditPass = new FormEditPass(this, email);
+            formEditPass.Show();
+            formEditPass.Owner = this;
+            this.Enabled = true;
+        }
+
+        private void textBox_login_TextChanged(object sender, EventArgs e)
+        {
+            WorkWithInput.EditPhoneToRight(textBox_login);
         }
     }
 }

@@ -7,6 +7,19 @@ using System.Threading.Tasks;
 
 namespace Conference
 {
+    public class UserWithTopic : User
+    {
+        string topic;
+        public UserWithTopic(users users, string topic) : base(users.user_id, users.surname, users.name, users.lastname, users.phone, users.email, users.pass, users.status, users.about_your_self)
+        {
+            this.topic = topic;
+        }
+        public string Topic
+        {
+            get => topic;
+        }
+    }
+
     public class User
     {
         public readonly int id, status;
@@ -65,7 +78,7 @@ namespace Conference
             this.aboutYourSelf = aboutYourSelf;
             if (phone != newPhone || email != newMail)
             {
-                // Отавить письмо на почту//////////////////////////////////////////////////////////////////////////////////////////////////////////
+                SendMailToUser.EditLoginComplited(Email);
                 phone = newPhone;
                 email = newMail;
                 Properties.Settings.Default.RememberLogin = "";
@@ -91,15 +104,29 @@ namespace Conference
 
         public static void AdminEditConference(int id, string newName, string newSubject, DateTime newDateTime, string newPlace, int newCountSpeakers, int newCountGuests, TimeSpan newTime)
         {
-            BD.EditConference(id, newName, newSubject, newDateTime, newPlace, newCountSpeakers, newCountGuests, newTime);
+            if (BD.EditConference(id, newName, newSubject, newDateTime, newPlace, newCountSpeakers, newCountGuests, newTime))
+            {
+                List<users> userList = BD.GetSpeakersInConference(id);
+                userList.AddRange(BD.GetGuestsInConference(id));
 
-            // Отправка мэйлов/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                foreach (users user in userList)
+                {
+                    SendMailToUser.SendConferenceChange(user.email, newName);
+                }
+            }
         }
 
         public static void AdminDeleteConference(int confId)
         {
-            BD.DeleteConference(confId);
-            // Отправка мэйлов/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            List<users> userList = BD.GetSpeakersInConference(confId);
+            userList.AddRange(BD.GetGuestsInConference(confId));
+            if (BD.DeleteConference(confId))
+            {
+                foreach (users user in userList)
+                {
+                    SendMailToUser.SendConferenceDeleted(user.email);
+                }
+            }
         }
 
         public static void RegistrationToConference(int userId, int confId, string topic)

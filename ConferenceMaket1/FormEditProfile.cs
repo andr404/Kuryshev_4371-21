@@ -59,11 +59,14 @@ namespace Conference
                 string phone = WorkWithInput.PhoneWhithoutMask(maskedPhone.Text);
                 string email = textBoxEmail.Text;
                 string about = textBoxAbout.Text;
-                if (WorkWithInput.IsAllNotEmpty(surname, name, phone, email) && ((user.status == 1 && about != "") || user.status != 1))
+                if (WorkWithInput.IsAllNotEmpty(surname, name) && WorkWithInput.IsEmailRight(email) && WorkWithInput.IsPhoneRight(phone) && ((user.status == 1 && about != "") || user.status != 1))
                 {
-                    user.EditProfile(surname, name, lastname, phone, email, about);
-                    this.Close();
-                    MessageBox.Show("Данные успешно изменены");
+                    if (((email != user.Email && !WorkWithInput.IsEmailInBase(email)) || user.Email == email) && ((phone != user.Phone && !WorkWithInput.IsPhoneInBase(phone)) || user.Phone == phone))
+                    {
+                        user.EditProfile(surname, name, lastname, phone, email, about);
+                        this.Close();
+                        MessageBox.Show("Данные успешно изменены");
+                    }
                 }
             }
             catch
@@ -95,6 +98,15 @@ namespace Conference
             formEditPass.Show();
             formEditPass.Owner = this;
             this.Enabled = false;
+        }
+
+        private void textBoxEmail_TextChanged(object sender, EventArgs e)
+        {
+            string futureEmail = textBoxEmail.Text;
+            if (WorkWithInput.IsEmailRight(futureEmail))
+                panel1.BackColor = Color.DarkGray;
+            else
+                panel1.BackColor = Color.Red;
         }
     }
 }
