@@ -90,6 +90,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormAdminChoiceList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Выбор списка";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAdminChoiceList_FormClosed);
             this.ResumeLayout(false);

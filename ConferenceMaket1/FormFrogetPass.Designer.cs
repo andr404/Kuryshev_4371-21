@@ -99,6 +99,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "FormFrogetPass";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Восстановление пароля";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormFrogetPass_FormClosed);
             this.panel1.ResumeLayout(false);

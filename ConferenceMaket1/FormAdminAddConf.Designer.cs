@@ -235,6 +235,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormAdminAddConf";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Создание конференции";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAdminAddConf_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.countSpeakers)).EndInit();

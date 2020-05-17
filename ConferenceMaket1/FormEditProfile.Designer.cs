@@ -241,6 +241,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormEditProfile";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование профиля";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormEditProfile_FormClosed);
             this.panel1.ResumeLayout(false);
