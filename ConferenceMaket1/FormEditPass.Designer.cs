@@ -38,11 +38,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelAttention = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +78,7 @@
             // textBoxOldPass
             // 
             this.textBoxOldPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxOldPass.Location = new System.Drawing.Point(1, 1);
+            this.textBoxOldPass.Location = new System.Drawing.Point(196, 66);
             this.textBoxOldPass.Name = "textBoxOldPass";
             this.textBoxOldPass.PasswordChar = '*';
             this.textBoxOldPass.Size = new System.Drawing.Size(280, 26);
@@ -139,14 +137,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.textBoxOldPass);
-            this.panel1.Location = new System.Drawing.Point(196, 64);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(282, 28);
-            this.panel1.TabIndex = 9;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.textBoxNewPass);
@@ -181,10 +171,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(492, 241);
+            this.Controls.Add(this.textBoxOldPass);
             this.Controls.Add(this.labelAttention);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -198,8 +188,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменение пароля";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormEditPass_FormClosed);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -220,7 +208,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label labelAttention;

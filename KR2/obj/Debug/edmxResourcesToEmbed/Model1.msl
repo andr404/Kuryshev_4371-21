@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище СongratulationModelContainer" CdmEntityContainer="СongratulationEntities">
+    <EntitySetMapping Name="cong">
+      <EntityTypeMapping TypeName="СongratulationModel.cong">
+        <MappingFragment StoreEntitySet="cong">
+          <ScalarProperty Name="cong_id" ColumnName="cong_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="congratulation" ColumnName="congratulation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

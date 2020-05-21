@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище СongratulationModel" Provider="Npgsql" ProviderManifestToken="12.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cong">
+    <Key>
+      <PropertyRef Name="cong_id" />
+    </Key>
+    <Property Name="cong_id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="text" Nullable="false" />
+    <Property Name="email" Type="text" Nullable="false" />
+    <Property Name="congratulation" Type="text" />
+  </EntityType>
+  <EntityContainer Name="Хранилище СongratulationModelContainer">
+    <EntitySet Name="cong" EntityType="Self.cong" Schema="public" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

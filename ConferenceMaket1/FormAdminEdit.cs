@@ -41,15 +41,24 @@ namespace Conference
                 string place = confPlace.Text;
                 int speakers = (int)countSpeakers.Value;
                 int guests = (int)countGuests.Value;
+                int speakersReg = BD.GetSpeakersRegistrationList(conference.conf_id).Count;
+                int guestsReg = BD.GetGuestsRegistrationList(conference.conf_id).Count;
                 TimeSpan time = TimeSpan.Parse(confTime.Text);
-                if (name != "" && subject != "" && place != "" && date > DateTime.Now)
+                if (WorkWithInput.IsAllNotEmpty(name, subject, place) && date > DateTime.Now)
                 {
-                    User.AdminEditConference(conference.conf_id, name, subject, date, place, speakers, guests, time);
-                    this.Close();
-                    MessageBox.Show("Данные успешно сохранены");
+                    if (guests >= guestsReg)
+                    {
+                        if (speakers >= speakersReg)
+                        {
+                            User.AdminEditConference(conference.conf_id, name, subject, date, place, speakers, guests, time);
+                            this.Close();
+                            MessageBox.Show("Данные успешно сохранены");
+                        }
+                        else MessageBox.Show("Число выступающих не может быть меньше " + speakersReg + ", так как на конференцию уже записаны выступающие");
+                    }
+                    else
+                        MessageBox.Show("Число гостей не может быть меньше " + guestsReg + ", так как на конференцию уже записаны гости");
                 }
-                else
-                    throw new Exception();
             }
             catch
             {

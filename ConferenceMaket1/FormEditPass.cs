@@ -65,17 +65,7 @@ namespace Conference
 
         private void textBoxOldPass_TextChanged(object sender, EventArgs e)
         {
-            string futureEmail = textBoxOldPass.Text;
-            if (WorkWithInput.IsPasswordRight(futureEmail))
-            {
-                panel1.BackColor = Color.DarkGray;
-                labelAttention.Visible = false;
-            }
-            else
-            {
-                panel1.BackColor = Color.Red;
-                labelAttention.Visible = true;
-            }
+            
         }
 
         private void textBoxNewPass_TextChanged(object sender, EventArgs e)

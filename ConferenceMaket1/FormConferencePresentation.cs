@@ -90,6 +90,7 @@ namespace Conference
                 {
                     buttonReg.Enabled = false;
                 }
+                else buttonReg.Enabled = true;
             }
             else
             {
@@ -100,6 +101,7 @@ namespace Conference
                 {
                     buttonReg.Enabled = false;
                 }
+                else buttonReg.Enabled = true;
             }
         }
     }

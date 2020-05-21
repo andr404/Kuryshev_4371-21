@@ -1,0 +1,8 @@
+БД Сongratulation
+
+CREATE TABLE Cong(cong_id serial primary key,
+					name text not null,
+				  email text not null,
+					congratulation text
+				);
+

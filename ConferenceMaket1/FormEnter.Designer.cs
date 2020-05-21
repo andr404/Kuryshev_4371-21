@@ -154,7 +154,7 @@
             this.MaximizeBox = false;
             this.Name = "FormEnter";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "iSpeak";
+            this.Text = "Авторизация в системе";
             this.ResumeLayout(false);
             this.PerformLayout();
 
