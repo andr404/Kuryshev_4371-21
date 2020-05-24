@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Conference
 {
-    class SendMailToUser
+    static class SendMailToUser
     {
         static string iSpeakEmail = "ispeakknitu";
         static string iSpeakPass = "Minadmin1";

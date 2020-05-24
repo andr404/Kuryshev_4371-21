@@ -93,7 +93,6 @@ namespace Conference
             Properties.Settings.Default.RememberLogin = "";
             Properties.Settings.Default.RememberPass = "";
             Properties.Settings.Default.Save();
-            SendMailToUser.EditPasswordComplited(Email);
         }
 
 

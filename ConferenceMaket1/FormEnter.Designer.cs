@@ -150,6 +150,7 @@
             this.Controls.Add(this.EnterButton);
             this.Controls.Add(this.textBox_pass);
             this.Controls.Add(this.textBox_login);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormEnter";
